@@ -13,12 +13,12 @@ function App() {
     <>
     <StyledGlobal />
       <Header>
-        <PersonalData />
+        {/* <PersonalData /> */}
       </Header>
       <Main>
-        <Contacts />
+        {/* <Contacts />
         <ContactDetail />
-        <UpdateContact />
+        <UpdateContact /> */}
         <Register />
         <Login />
       </Main>
