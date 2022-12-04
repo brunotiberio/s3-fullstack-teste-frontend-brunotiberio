@@ -1,9 +1,6 @@
 import axios from "axios";
 
-const token = localStorage.getItem("@AGENDA-TOKEN");
-
 export const api = axios.create({
-  baseURL: "http://localhost:3000/",
-  headers: { Authorization: "Bearer" + token },
+  baseURL: "http://localhost:4000",
   timeout: 8000,
 });
