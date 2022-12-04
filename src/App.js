@@ -5,6 +5,8 @@ import PersonalData from './components/PersonalData';
 import Contacts from './components/Contacts';
 import ContactDetail from './components/ContactDetail';
 import UpdateContact from './components/UpdateContact';
+import Register from './components/Register';
+import Login from './components/Login';
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
         <Contacts />
         <ContactDetail />
         <UpdateContact />
+        <Register />
+        <Login />
       </Main>
     </>
   );
