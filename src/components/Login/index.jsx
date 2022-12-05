@@ -3,9 +3,11 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { UserContext } from "../../contexts/UserContext";
+import { useHistory } from 'react-router-dom'
 
 export default function Login() {
   const { userLogin } = useContext(UserContext);
+  const history = useHistory()
 
   const formSchema = yup.object().shape({
     username: yup.string().required("Nome de usuário é obrigatório"),
@@ -35,7 +37,7 @@ export default function Login() {
       </form>
       <div>
         <p>Não possui cadastro?</p>
-        <button>Cadastre-se</button>
+        <button onClick={() => history.push('/register')}>Cadastre-se</button>
       </div>
     </>
   );
