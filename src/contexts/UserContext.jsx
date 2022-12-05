@@ -2,12 +2,13 @@ import { useState, useEffect } from "react";
 import { createContext } from "react";
 import { toast } from "react-toastify";
 import { api } from "../services/api";
-// import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 export const UserContext = createContext({});
 
 export const UserProvider = ({ children }) => {
   const [userLoggedData, setUserLoggedData] = useState(null);
+  const history = useHistory();
 
   useEffect(() => {
     const token = localStorage.getItem("@AGENDA-TOKEN");
@@ -55,10 +56,10 @@ export const UserProvider = ({ children }) => {
       localStorage.setItem("@AGENDA-ID", response.data.id);
       toast.success("Logado com sucesso. Redirecionando...");
       getUser();
-      // setUserLogged(response.data.user)
-      // setTimeout(() => {
-      //   // <Redirect to='/' />
-      // }, 3000)
+
+      setTimeout(() => {
+        history.push("/user");
+      }, 4000);
     } catch (error) {
       toast.error("Erro interno do servidor. Tente novamente mais tarde");
     }
@@ -80,6 +81,20 @@ export const UserProvider = ({ children }) => {
       toast.error(error.response.data.message);
     }
   }
+
+  async function logout() {
+    localStorage.removeItem("@AGENDA-TOKEN");
+    localStorage.removeItem("@AGENDA-ID");
+
+    toast.success("Saindo da Agenda. Até a próxima =D");
+
+    setUserLoggedData(null);
+
+    setTimeout(() => {
+      history.push("/");
+    }, 4000);
+  }
+
   console.log(userLoggedData);
 
   return (
@@ -89,6 +104,7 @@ export const UserProvider = ({ children }) => {
         userLogin,
         getUser,
         setUserLoggedData,
+        logout,
         userLoggedData,
       }}
     >
