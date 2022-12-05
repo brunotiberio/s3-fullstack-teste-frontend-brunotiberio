@@ -1,6 +1,11 @@
 import React from "react";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
 
 export default function PersonalData() {
+
+  const {logout} = useContext(UserContext)
+
   return (
     <>
       <div>
@@ -11,7 +16,7 @@ export default function PersonalData() {
         <div>
           <button>Alterar meus dados</button>
           <button>Adicionar novo contato</button>
-          <button>Sair</button>
+          <button onClick={() => logout()}>Sair</button>
         </div>
       </div>
     </>
