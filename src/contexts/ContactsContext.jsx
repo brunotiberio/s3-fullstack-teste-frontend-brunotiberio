@@ -17,11 +17,11 @@ export const ContactsProvider = ({ children }) => {
   
   
   useEffect(() => {
-    getUser()
-  }, [contact])
+    getUser() // eslint-disable-next-line
+  }, [contact]) 
 
   useEffect(() => {
-    getUser()
+    getUser() // eslint-disable-next-line
   }, [contactDeleted])
 
   async function contactCreate(formData) {
