@@ -1,5 +1,6 @@
 import { Route, Switch } from "react-router-dom";
 import ContactDetailPage from "../pages/ContactDetailPage";
+import ContactEditPage from "../pages/ContactEditPage";
 import Home from "../pages/Home";
 import MainPage from "../pages/MainPage";
 import RegisterPage from "../pages/Register";
@@ -22,6 +23,9 @@ function Paths() {
       </Route>
       <Route exact path="/contact/detail">
         <ContactDetailPage />
+      </Route>
+      <Route exact path="/contact/edit">
+        <ContactEditPage />
       </Route>
     </Switch>
   );
