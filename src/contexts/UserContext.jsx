@@ -72,16 +72,18 @@ export const UserProvider = ({ children }) => {
     const token = localStorage.getItem("@AGENDA-TOKEN");
     const id = localStorage.getItem("@AGENDA-ID");
     try {
-      const parsedToken = JSON.parse(token);
+      if(token){
+        const parsedToken = JSON.parse(token);
 
-      const response = await api.get(`/users/${id}`, {
-        headers: {
-          Authorization: `Bearer ${parsedToken}`,
-        },
-      });
-      setUserLoggedData(response.data);
-    } catch (error) {
-      toast.error(error.response.data.message);
+        const response = await api.get(`/users/${id}`, {
+          headers: {
+            Authorization: `Bearer ${parsedToken}`,
+          },
+        });
+        setUserLoggedData(response.data);
+      }      
+    } catch (error) {      
+        toast.error(error.response.data.message);  
     }
   }
 
