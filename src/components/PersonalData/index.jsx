@@ -16,7 +16,7 @@ export default function PersonalData() {
         </div>
         <div>
           <button onClick={() => history.push('/user/edit')}>Alterar meus dados</button>
-          <button>Adicionar novo contato</button>
+          <button onClick={() => history.push('/contact/create')}>Adicionar novo contato</button>
           <button onClick={() => logout()}>Sair</button>
         </div>
       </div>
