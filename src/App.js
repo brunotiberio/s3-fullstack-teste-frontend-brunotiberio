@@ -7,21 +7,13 @@ import ContactDetail from './components/ContactDetail';
 import UpdateContact from './components/UpdateContact';
 import Register from './components/Register';
 import Login from './components/Login';
+import Paths from './routes';
 
 function App() {
   return (
     <>
     <StyledGlobal />
-      <Header>
-        {/* <PersonalData /> */}
-      </Header>
-      <Main>
-        {/* <Contacts />
-        <ContactDetail />
-        <UpdateContact /> */}
-        <Register />
-        <Login />
-      </Main>
+    <Paths />
     </>
   );
 }

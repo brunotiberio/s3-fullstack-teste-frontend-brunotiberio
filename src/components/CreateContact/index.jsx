@@ -1,18 +1,23 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import { UserContext } from "../../contexts/UserContext";
 import { useHistory } from "react-router-dom";
+import { ContactsContext } from "../../contexts/ContactsContext";
+import { UserContext } from "../../contexts/UserContext";
 
-export default function Register() {
-  const { userCreate } = useContext(UserContext);
+export default function CreateContact() {
+  const { contactCreate } = useContext(ContactsContext);
+  const { getUser } = useContext(UserContext);
+  const [contactCreated, setContactCreated] = useState(false)
   const history = useHistory()
+
+  useEffect(() => {
+    getUser()
+  }, [contactCreated])
 
   const formSchema = yup.object().shape({
     fullname: yup.string().required("Nome é obrigatório"),
-    username: yup.string().required("Nome de usuário é obrigatório"),
-    password: yup.string().required("Senha é obrigatória"),
     emails: yup.string().required("Email obrigatório"),
     phones: yup.string().required("Telefone obrigatório"),
   });
@@ -29,28 +34,22 @@ export default function Register() {
     const formData = data;
     formData.emails = formData.emails.replace(" ", "").split(",");
     formData.phones = formData.phones.replace(" ", "").split(",");
-    console.log(formData);
-    userCreate(formData);
+    setContactCreated(!contactCreated)
+    contactCreate(formData);
   };
 
   return (
     <>
-      <h2>Cadastro</h2>
+      <h2>Adicionar contato</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
+
         <input
           type="text"
           placeholder="Nome Completo"
           {...register("fullname")}
         />
         {errors.fullname?.message && <p>Digite seu nome completo</p>}
-        <input
-          type="text"
-          placeholder="Nome de usuário"
-          {...register("username")}
-        />
-        {errors.username?.message && <p>Nome de usuário é obrigatório</p>}
-        <input type="password" placeholder="Senha" {...register("password")} />
-        {errors.password?.message && <p>Digite uma senha</p>}
+
         <input
           type="text"
           placeholder="Coloque seus e-mails (separe por vírgula)"
@@ -59,6 +58,7 @@ export default function Register() {
         {errors.emails?.message && (
           <p>Coloque um ou mais e-mails separados por vírgula</p>
         )}
+
         <input
           type="text"
           placeholder="Coloque seus telefones (separe por vírgula)"
@@ -67,11 +67,10 @@ export default function Register() {
         {errors.phones?.message && (
           <p>Coloque um ou mais telefones separados por vírgula</p>
         )}
-        <button>Cadastrar</button>
+
+        <button>Adicionar</button>
       </form>
-      <p>
-        Já possui cadastro? Faça o <button onClick={() => history.push('/')}>Login</button>
-      </p>
+      <button onClick={() => history.push('/user')}>Voltar a página principal</button>
     </>
   );
 }

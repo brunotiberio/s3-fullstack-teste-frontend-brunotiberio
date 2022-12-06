@@ -7,6 +7,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { UserProvider } from "./contexts/UserContext";
 import { BrowserRouter } from "react-router-dom";
+import { ContactsProvider } from "./contexts/ContactsContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -14,7 +15,9 @@ root.render(
     <ToastContainer />
     <BrowserRouter>
       <UserProvider>
-        <App />
+        <ContactsProvider>
+          <App />
+        </ContactsProvider>
       </UserProvider>
     </BrowserRouter>
   </React.StrictMode>
