@@ -1,8 +1,9 @@
 import { Route, Switch } from "react-router-dom";
+import ContactDetailPage from "../pages/ContactDetailPage";
 import Home from "../pages/Home";
 import MainPage from "../pages/MainPage";
 import RegisterPage from "../pages/Register";
-
+import UserEditPage from "../pages/UserEditPage";
 
 function Paths() {
   return (
@@ -15,6 +16,12 @@ function Paths() {
       </Route>
       <Route exact path="/user">
         <MainPage />
+      </Route>
+      <Route exact path="/user/edit">
+        <UserEditPage />
+      </Route>
+      <Route exact path="/contact/detail">
+        <ContactDetailPage />
       </Route>
     </Switch>
   );
