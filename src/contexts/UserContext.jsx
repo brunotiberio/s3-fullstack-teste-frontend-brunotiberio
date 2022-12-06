@@ -61,7 +61,7 @@ export const UserProvider = ({ children }) => {
 
       setTimeout(() => {
         history.push("/user");
-      }, 3000);
+      }, 1500);
     } catch (error) {
       console.log(error.response.data.message);
       toast.error(error.response.data.message);
