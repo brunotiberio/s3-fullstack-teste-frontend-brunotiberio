@@ -24,6 +24,28 @@ export const ContactsProvider = ({ children }) => {
     getUser()
   }, [contactDeleted])
 
+  async function contactCreate(formData) {
+    const token = localStorage.getItem("@AGENDA-TOKEN")
+
+    try {
+      const parsedToken = JSON.parse(token);
+
+      await api.post("/contacts", formData, {
+        headers: {
+          Authorization: `Bearer ${parsedToken}`,
+        }
+      });
+
+      toast.success("Contato criado com sucesso");
+
+      setTimeout(() => {
+        history.push("/user");
+      }, 1500);
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
+  }
+
 
   async function getContact(contactId) {
     const token = localStorage.getItem("@AGENDA-TOKEN");
@@ -81,7 +103,7 @@ export const ContactsProvider = ({ children }) => {
 
   return (
     <ContactsContext.Provider
-      value={{ getContact, deleteContact, editContact, contact }}
+      value={{ contactCreate, getContact, deleteContact, editContact, contact }}
     >
       {children}
     </ContactsContext.Provider>
