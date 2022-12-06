@@ -1,8 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { ContactsContext } from "../../contexts/ContactsContext";
+import { UserContext } from "../../contexts/UserContext";
 
 export default function ContactDetail() {
-  const { contact } = useContext(ContactsContext);
+  const { contact, deleteContact } = useContext(ContactsContext);
+  const {getUser} = useContext(UserContext)
+  const history = useHistory()
+
+  useEffect(() => {
+    getUser()
+  }, [contact])
 
   return (
     <>
@@ -24,11 +32,9 @@ export default function ContactDetail() {
         </ul>
       </div>
       <div>
-        <button>Atualizar Contato</button>
-        <button>Excluir Contato</button>
+        <button onClick={() => history.push('/contact/edit')}>Atualizar Contato</button>
+        <button onClick={() => deleteContact(contact.id)}>Excluir Contato</button>
       </div>
     </>
   );
 }
-
-// usado para fazer o map dos contatos
