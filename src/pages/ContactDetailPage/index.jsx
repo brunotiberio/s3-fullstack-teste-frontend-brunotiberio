@@ -5,7 +5,7 @@ import Header from "../../components/Header";
 import Main from "../../components/Main";
 
 export default function ContactDetailPage() {
-  const history = useHistory()
+  const history = useHistory();
 
   return (
     <>
@@ -13,8 +13,10 @@ export default function ContactDetailPage() {
         <h1>Agenda</h1>
       </Header>
       <Main>
-      <ContactDetail />
-      <button onClick={() => history.push('/user')}>Voltar para a página principal</button>
+        <ContactDetail />
+        <button onClick={() => history.push("/user")}>
+          Voltar para a página principal
+        </button>
       </Main>
     </>
   );
