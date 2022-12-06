@@ -1,14 +1,29 @@
+import { useEffect } from "react";
 import { useState } from "react";
+import { useContext } from "react";
 import { createContext } from "react";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import { api } from "../services/api";
+import { UserContext } from "./UserContext";
 
 export const ContactsContext = createContext({});
 
 export const ContactsProvider = ({ children }) => {
   const [contact, setContact] = useState(null);
+  const [contactDeleted, setContactDeleted] = useState(false)
+  const {getUser} = useContext(UserContext)
   const history = useHistory();
+  
+  
+  useEffect(() => {
+    getUser()
+  }, [contact])
+
+  useEffect(() => {
+    getUser()
+  }, [contactDeleted])
+
 
   async function getContact(contactId) {
     const token = localStorage.getItem("@AGENDA-TOKEN");
@@ -34,13 +49,14 @@ export const ContactsProvider = ({ children }) => {
     try {
       const parsedToken = JSON.parse(token);
 
-      const response = await api.delete(`/contacts/${contactId}`, {
+      await api.delete(`/contacts/${contactId}`, {
         headers: {
           Authorization: `Bearer ${parsedToken}`,
         },
       });
+      setContactDeleted(!contactDeleted)
       toast.success("Contato deletado com sucesso");
-      return response.data;
+      history.push('/user')
     } catch (error) {
       toast.error(error.response.data.message);
     }
