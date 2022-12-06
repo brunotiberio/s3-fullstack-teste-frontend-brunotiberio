@@ -37,10 +37,12 @@ export const UserProvider = ({ children }) => {
   async function userCreate(formData) {
     try {
       await api.post("/users", formData);
+
       toast.success("Usuário cadastrado com sucesso. Indo para o Login");
-      // setTimeout(() => {
-      //   // <Redirect to='/' />
-      // }, 3000)
+
+      setTimeout(() => {
+        history.push("/");
+      }, 3000);
     } catch (error) {
       toast.error(error.response.data.message);
     }
@@ -59,9 +61,10 @@ export const UserProvider = ({ children }) => {
 
       setTimeout(() => {
         history.push("/user");
-      }, 4000);
+      }, 3000);
     } catch (error) {
-      toast.error("Erro interno do servidor. Tente novamente mais tarde");
+      console.log(error.response.data.message);
+      toast.error(error.response.data.message);
     }
   }
 
@@ -82,6 +85,47 @@ export const UserProvider = ({ children }) => {
     }
   }
 
+  async function editUser(contactId, formData) {
+    const token = localStorage.getItem("@AGENDA-TOKEN");
+    try {
+      const parsedToken = JSON.parse(token);
+
+      const response = await api.patch(`/users/${contactId}`, formData, {
+        headers: {
+          Authorization: `Bearer ${parsedToken}`,
+        },
+      });
+      setUserLoggedData(response.data);
+      toast.success("Usuário atualizado com sucesso");
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
+  }
+
+  async function deleteUser(userId) {
+    const token = localStorage.getItem("@AGENDA-TOKEN");
+    try {
+      const parsedToken = JSON.parse(token);
+
+      await api.delete(`/users/${userId}`, {
+        headers: {
+          Authorization: `Bearer ${parsedToken}`,
+        },
+      });
+
+      localStorage.removeItem("@AGENDA-TOKEN");
+      localStorage.removeItem("@AGENDA-ID");
+
+      setUserLoggedData(null);
+
+      history.push("/");
+
+      toast.success("Usuário deletado com sucesso");
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
+  }
+
   async function logout() {
     localStorage.removeItem("@AGENDA-TOKEN");
     localStorage.removeItem("@AGENDA-ID");
@@ -90,9 +134,7 @@ export const UserProvider = ({ children }) => {
 
     setUserLoggedData(null);
 
-    setTimeout(() => {
-      history.push("/");
-    }, 4000);
+    history.push("/");
   }
 
   console.log(userLoggedData);
@@ -104,6 +146,8 @@ export const UserProvider = ({ children }) => {
         userLogin,
         getUser,
         setUserLoggedData,
+        deleteUser,
+        editUser,
         logout,
         userLoggedData,
       }}
