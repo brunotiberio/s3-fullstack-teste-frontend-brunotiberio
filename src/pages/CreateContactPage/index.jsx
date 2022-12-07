@@ -1,10 +1,11 @@
 import React from 'react'
 import CreateContact from '../../components/CreateContact'
+import { StyledH1ContactCreate } from './style'
 
 export default function CreateContactPage(){
     return (
         <>
-            <h1>Agenda</h1>
+            <StyledH1ContactCreate>Agenda</StyledH1ContactCreate>
             <CreateContact />
         </>
     )

@@ -2,6 +2,7 @@ import React from 'react'
 import Header from '../../components/Header'
 import Main from '../../components/Main'
 import UserEdit from '../../components/UserEdit'
+import { StyledH1EditUser, StyledH2EditUser } from './style'
 
 export default function UserEditPage(){
     
@@ -9,10 +10,10 @@ export default function UserEditPage(){
     return (
         <>
         <Header>
-            <h1>Agenda</h1>
+            <StyledH1EditUser>Agenda</StyledH1EditUser>
         </Header>
         <Main>
-            <h2>Editar perfil</h2>
+            <StyledH2EditUser>Editar perfil</StyledH2EditUser>
             <UserEdit />
         </Main>
         </>

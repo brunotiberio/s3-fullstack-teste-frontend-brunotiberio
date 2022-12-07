@@ -7,7 +7,7 @@ export default function UpdatePassword() {
 
   const {
     register,
-    handleSubmit,
+    handleSubmit, // eslint-disable-next-line
     formState: { errors },
   } = useForm({});
 
@@ -17,14 +17,13 @@ export default function UpdatePassword() {
 
   return (
     <>
-      <h2>Alterar senha</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
           type="password"
           placeholder="Digite uma nova senha"
           {...register("password")}
         />
-        <button>Confirmar alterações</button>
+        <button>Alterar senha</button>
       </form>
     </>
   );
