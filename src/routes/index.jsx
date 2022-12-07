@@ -26,7 +26,7 @@ function Paths() {
         <CreateContactPage />
       </Route>
       <Route exact path="/contact/detail">
-        <ContactDetailPage />
+        <ContactDetailPage /> 
       </Route>
       <Route exact path="/contact/edit">
         <ContactEditPage />
