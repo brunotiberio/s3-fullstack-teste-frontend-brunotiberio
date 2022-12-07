@@ -57,6 +57,8 @@ export const StyledContainer = styled.div`
     color: #38101c;
     font-weight: 500;
     margin-left: 5%;
+
+    font-size: 12px;
   }
 
   div {
