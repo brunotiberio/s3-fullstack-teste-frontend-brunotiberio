@@ -2,6 +2,11 @@ import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import { ContactsContext } from "../../contexts/ContactsContext";
+import {
+  StyledContainerInputsContactEdit,
+  StyledContainerContactEdit,
+  StyledButtonContainerContactEdit,
+} from "./style";
 
 export default function ContactEdit() {
   const { contact, editContact } = useContext(ContactsContext);
@@ -29,37 +34,43 @@ export default function ContactEdit() {
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <input
-          type="text"
-          placeholder="Nome Completo"
-          {...register("fullname", { value: contact?.fullname })}
-        />
-        {errors.fullname?.message && <p>Digite seu nome completo</p>}
-        <input
-          type="text"
-          placeholder="Coloque seus e-mails (separe por vírgula)"
-          {...register("emails", { value: contact?.emails })}
-        />
-        {errors.emails?.message && (
-          <p>Coloque um ou mais e-mails separados por vírgula</p>
-        )}
-        <input
-          type="text"
-          placeholder="Coloque seus telefones (separe por vírgula)"
-          {...register("phones", { value: contact?.phones })}
-        />
-        {errors.phones?.message && (
-          <p>Coloque um ou mais telefones separados por vírgula</p>
-        )}
-        <button>Confirmar alterações</button>
-      </form>
-      <button onClick={() => history.push('/contact/detail')}>
-        Retornar as detalhes
-      </button>
-      <button onClick={() => history.push("/user")}>
-        Voltar a página principal
-      </button>
+      <StyledContainerInputsContactEdit>
+        <StyledContainerContactEdit>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <input
+              type="text"
+              placeholder="Nome Completo"
+              {...register("fullname", { value: contact?.fullname })}
+            />
+            {errors.fullname?.message && <p>Digite seu nome completo</p>}
+            <input
+              type="text"
+              placeholder="Coloque seus e-mails (separe por vírgula)"
+              {...register("emails", { value: contact?.emails })}
+            />
+            {errors.emails?.message && (
+              <p>Coloque um ou mais e-mails separados por vírgula</p>
+            )}
+            <input
+              type="text"
+              placeholder="Coloque seus telefones (separe por vírgula)"
+              {...register("phones", { value: contact?.phones })}
+            />
+            {errors.phones?.message && (
+              <p>Coloque um ou mais telefones separados por vírgula</p>
+            )}
+            <button>Confirmar alterações</button>
+          </form>
+        </StyledContainerContactEdit>
+      </StyledContainerInputsContactEdit>
+      <StyledButtonContainerContactEdit>
+        <button onClick={() => history.push("/contact/detail")}>
+          Retornar aos detalhes
+        </button>
+        <button onClick={() => history.push("/user")}>
+          Voltar a página principal
+        </button>
+      </StyledButtonContainerContactEdit>
     </>
   );
 }
