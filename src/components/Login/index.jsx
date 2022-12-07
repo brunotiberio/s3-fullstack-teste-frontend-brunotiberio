@@ -4,16 +4,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { UserContext } from "../../contexts/UserContext";
 import { useHistory } from "react-router-dom";
-import { useState } from "react";
-import { Visibility } from "@mui/icons-material";
-import { StyledContainer, StyledForm } from "./style";
+import { StyledContainer } from "./style";
 
 export default function Login() {
-  const [showPassword, setShowPassword] = useState(false);
 
-  function handleChangeVisibilityPassword() {
-    setShowPassword(!showPassword);
-  }
 
   const { userLogin } = useContext(UserContext);
   const history = useHistory();
