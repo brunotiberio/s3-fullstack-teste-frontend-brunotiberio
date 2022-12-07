@@ -15,6 +15,10 @@ export const StyledDivContacts = styled.div`
   max-width: 700px;
   margin: auto;
 
+  p{
+    color: white;
+  }
+
   button {
     margin-bottom: 10px;
     width: 60%;
