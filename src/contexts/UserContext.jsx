@@ -63,7 +63,6 @@ export const UserProvider = ({ children }) => {
         history.push("/user");
       }, 1500);
     } catch (error) {
-      console.log(error.response.data.message);
       toast.error(error.response.data.message);
     }
   }
@@ -72,7 +71,7 @@ export const UserProvider = ({ children }) => {
     const token = localStorage.getItem("@AGENDA-TOKEN");
     const id = localStorage.getItem("@AGENDA-ID");
     try {
-      if(token){
+      if (token) {
         const parsedToken = JSON.parse(token);
 
         const response = await api.get(`/users/${id}`, {
@@ -81,9 +80,9 @@ export const UserProvider = ({ children }) => {
           },
         });
         setUserLoggedData(response.data);
-      }      
-    } catch (error) {      
-        toast.error(error.response.data.message);  
+      }
+    } catch (error) {
+      toast.error(error.response.data.message);
     }
   }
 
@@ -138,8 +137,6 @@ export const UserProvider = ({ children }) => {
 
     history.push("/");
   }
-
-  console.log(userLoggedData);
 
   return (
     <UserContext.Provider

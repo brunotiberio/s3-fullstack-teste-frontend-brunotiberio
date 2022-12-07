@@ -13,15 +13,15 @@ export const StyledDivContainerContactDetail = styled.div`
 
   margin-bottom: 10px;
 
-  ul{
+  ul {
     list-style: none;
     color: white;
     text-align: center;
     margin-bottom: 20px;
 
-    li{
-        text-align: center;
-        margin-top: 10px;
+    li {
+      text-align: center;
+      margin-top: 10px;
     }
   }
 `;

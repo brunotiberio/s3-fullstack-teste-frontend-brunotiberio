@@ -17,7 +17,6 @@ export const StyledH2PersonalData = styled.h2`
 export const StyledContainerButtonsPersonalData = styled.div`
   display: flex;
   margin: auto;
-  
 
   max-width: 600px;
 
@@ -29,7 +28,7 @@ export const StyledContainerButtonsPersonalData = styled.div`
     border-radius: 20px 20px;
 
     width: 50%;
-    
+
     height: 40px;
   }
 `;
@@ -38,7 +37,6 @@ export const StyledButtonLogout = styled.button`
   background-color: #0b2d38;
   border: 2px solid white;
   color: white;
-  
 
   :hover {
     background-color: #38101c;
@@ -53,7 +51,7 @@ export const StyledButtonPersonalData = styled.button`
   color: white;
 
   :hover {
-    background-color: #0C6885;
+    background-color: #0c6885;
     border: 2px solid green;
     color: white;
   }

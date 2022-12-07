@@ -3,7 +3,10 @@ import { useHistory } from "react-router-dom";
 import { ContactsContext } from "../../contexts/ContactsContext";
 import { UserContext } from "../../contexts/UserContext";
 import { StyledButtonContainerContactDetail } from "../../pages/ContactDetailPage/style";
-import { StyledDivContainerContactDetail, StyledH2ContactDetail } from "./style";
+import {
+  StyledDivContainerContactDetail,
+  StyledH2ContactDetail,
+} from "./style";
 
 export default function ContactDetail() {
   const { contact, deleteContact } = useContext(ContactsContext);
@@ -16,8 +19,8 @@ export default function ContactDetail() {
 
   return (
     <>
-        <StyledH2ContactDetail>{contact?.fullname}</StyledH2ContactDetail>
-        <StyledDivContainerContactDetail>
+      <StyledH2ContactDetail>{contact?.fullname}</StyledH2ContactDetail>
+      <StyledDivContainerContactDetail>
         <ul>
           {" "}
           Email para contato
@@ -36,7 +39,7 @@ export default function ContactDetail() {
             contact.phones.map((phone, index) => <li key={index}>{phone}</li>)
           )}
         </ul>
-        </StyledDivContainerContactDetail>
+      </StyledDivContainerContactDetail>
       <StyledButtonContainerContactDetail>
         <button onClick={() => history.push("/contact/edit")}>
           Atualizar Contato

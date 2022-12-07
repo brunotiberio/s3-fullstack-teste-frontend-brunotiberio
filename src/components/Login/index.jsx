@@ -7,8 +7,6 @@ import { useHistory } from "react-router-dom";
 import { StyledContainer } from "./style";
 
 export default function Login() {
-
-
   const { userLogin } = useContext(UserContext);
   const history = useHistory();
 
@@ -28,11 +26,10 @@ export default function Login() {
   const onSubmit = (data) => {
     userLogin(data);
   };
-  return (    
+  return (
     <StyledContainer>
-    <h2>Login</h2>
+      <h2>Login</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
-        
         <input type="text" placeholder="Username" {...register("username")} />
         {errors.username?.message && <p>Digite seu nome de usuário</p>}
 
@@ -45,7 +42,6 @@ export default function Login() {
         <p>Não possui cadastro?</p>
         <button onClick={() => history.push("/register")}>Cadastre-se</button>
       </div>
-      </StyledContainer>
-    
+    </StyledContainer>
   );
 }

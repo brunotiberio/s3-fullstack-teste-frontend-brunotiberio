@@ -15,7 +15,7 @@ export const StyledDivContacts = styled.div`
   max-width: 700px;
   margin: auto;
 
-  p{
+  p {
     color: white;
   }
 

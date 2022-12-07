@@ -11,21 +11,20 @@ export const ContactsContext = createContext({});
 
 export const ContactsProvider = ({ children }) => {
   const [contact, setContact] = useState(null);
-  const [contactDeleted, setContactDeleted] = useState(false)
-  const {getUser} = useContext(UserContext)
+  const [contactDeleted, setContactDeleted] = useState(false);
+  const { getUser } = useContext(UserContext);
   const history = useHistory();
-  
-  
-  useEffect(() => {
-    getUser() // eslint-disable-next-line
-  }, [contact]) 
 
   useEffect(() => {
-    getUser() // eslint-disable-next-line
-  }, [contactDeleted])
+    getUser(); // eslint-disable-next-line
+  }, [contact]);
+
+  useEffect(() => {
+    getUser(); // eslint-disable-next-line
+  }, [contactDeleted]);
 
   async function contactCreate(formData) {
-    const token = localStorage.getItem("@AGENDA-TOKEN")
+    const token = localStorage.getItem("@AGENDA-TOKEN");
 
     try {
       const parsedToken = JSON.parse(token);
@@ -33,7 +32,7 @@ export const ContactsProvider = ({ children }) => {
       await api.post("/contacts", formData, {
         headers: {
           Authorization: `Bearer ${parsedToken}`,
-        }
+        },
       });
 
       toast.success("Contato criado com sucesso");
@@ -45,7 +44,6 @@ export const ContactsProvider = ({ children }) => {
       toast.error(error.response.data.message);
     }
   }
-
 
   async function getContact(contactId) {
     const token = localStorage.getItem("@AGENDA-TOKEN");
@@ -76,9 +74,9 @@ export const ContactsProvider = ({ children }) => {
           Authorization: `Bearer ${parsedToken}`,
         },
       });
-      setContactDeleted(!contactDeleted)
+      setContactDeleted(!contactDeleted);
       toast.success("Contato deletado com sucesso");
-      history.push('/user')
+      history.push("/user");
     } catch (error) {
       toast.error(error.response.data.message);
     }
@@ -94,7 +92,7 @@ export const ContactsProvider = ({ children }) => {
           Authorization: `Bearer ${parsedToken}`,
         },
       });
-      setContact(response.data)
+      setContact(response.data);
       toast.success("Contato atualizado com sucesso");
     } catch (error) {
       toast.error(error.response.data.message);

@@ -3,7 +3,10 @@ import { useHistory } from "react-router-dom";
 import ContactDetail from "../../components/ContactDetail";
 import Header from "../../components/Header";
 import Main from "../../components/Main";
-import { StyledButtonContainerContactDetail, StyledH1ContactDetail } from "./style";
+import {
+  StyledButtonContainerContactDetail,
+  StyledH1ContactDetail,
+} from "./style";
 
 export default function ContactDetailPage() {
   const history = useHistory();
@@ -16,9 +19,9 @@ export default function ContactDetailPage() {
       <Main>
         <ContactDetail />
         <StyledButtonContainerContactDetail>
-        <button onClick={() => history.push("/user")}>
-          Voltar para a página principal
-        </button>
+          <button onClick={() => history.push("/user")}>
+            Voltar para a página principal
+          </button>
         </StyledButtonContainerContactDetail>
       </Main>
     </>

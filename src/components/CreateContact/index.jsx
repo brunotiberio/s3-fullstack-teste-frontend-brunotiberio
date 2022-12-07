@@ -80,9 +80,9 @@ export default function CreateContact() {
         </StyledContainerContactCreate>
       </StyledContainerInputsContactCreate>
       <StyledButtonContainerContactCreate>
-      <button onClick={() => history.push("/user")}>
-        Voltar a página principal
-      </button>
+        <button onClick={() => history.push("/user")}>
+          Voltar a página principal
+        </button>
       </StyledButtonContainerContactCreate>
     </>
   );

@@ -30,7 +30,6 @@ export default function Register() {
     const formData = data;
     formData.emails = formData.emails.replace(" ", "").split(",");
     formData.phones = formData.phones.replace(" ", "").split(",");
-    console.log(formData);
     userCreate(formData);
   };
 
