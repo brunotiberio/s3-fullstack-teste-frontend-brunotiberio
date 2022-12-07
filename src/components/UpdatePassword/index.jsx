@@ -7,7 +7,7 @@ export default function UpdatePassword() {
 
   const {
     register,
-    handleSubmit,
+    handleSubmit, // eslint-disable-next-line
     formState: { errors },
   } = useForm({});
 

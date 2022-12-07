@@ -13,7 +13,7 @@ export default function CreateContact() {
   const history = useHistory()
 
   useEffect(() => {
-    getUser()
+    getUser() // eslint-disable-next-line
   }, [contactCreated])
 
   const formSchema = yup.object().shape({

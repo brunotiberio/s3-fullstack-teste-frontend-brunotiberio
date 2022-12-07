@@ -9,7 +9,7 @@ export default function ContactDetail() {
   const history = useHistory()
 
   useEffect(() => {
-    getUser()
+    getUser() // eslint-disable-next-line
   }, [contact])
 
   return (
