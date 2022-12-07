@@ -4,10 +4,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { UserContext } from "../../contexts/UserContext";
 import { useHistory } from "react-router-dom";
+import { StyledContainerRegister } from "./style";
 
 export default function Register() {
   const { userCreate } = useContext(UserContext);
-  const history = useHistory()
+  const history = useHistory();
 
   const formSchema = yup.object().shape({
     fullname: yup.string().required("Nome é obrigatório"),
@@ -34,7 +35,7 @@ export default function Register() {
   };
 
   return (
-    <>
+    <StyledContainerRegister>
       <h2>Cadastro</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
@@ -69,9 +70,10 @@ export default function Register() {
         )}
         <button>Cadastrar</button>
       </form>
-      <p>
-        Já possui cadastro? Faça o <button onClick={() => history.push('/')}>Login</button>
-      </p>
-    </>
+      <div>
+        <p>Já possui cadastro? Faça o Login</p>
+        <button onClick={() => history.push("/")}>Login</button>
+      </div>
+    </StyledContainerRegister>
   );
 }
