@@ -146,6 +146,9 @@ Foram criados, no total, 11 componentes:
 
 Ao total, foram criadas 7 páginas para a construção da aplicação, sendo a página inicial, a que possui o componente de Login. As demais páginas são relacionadas ao CRUD de Usuário e Contatos
 
+**Observações gerais**
+- Para a criação de um usuário, os emails e passwords são passados dentro do mesmo input, separado por vírgulas. Pensei em utilizar o hook fieldsArray do React-Hook-Form, mas por questões de tempo de entrega, não consegui adaptar a tecnologia para o sistema, optando pela primeira alternativa. O mesmo vale para o cadastro dos emails e telefones dos contatos.
+
 #### 4.2.4. Rotas e Consumo da API
 
 #### 4.2.4.1. Rotas
